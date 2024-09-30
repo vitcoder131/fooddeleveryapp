@@ -7,7 +7,7 @@ class AuthMethods{
     return auth.currentUser;
   }
 
-  Future SignOut()async{
+  Future signOut()async{
     await FirebaseAuth.instance.signOut();
   }
 

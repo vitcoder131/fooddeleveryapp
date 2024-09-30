@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooddeliveryapp/admin/add_food.dart';
-import 'package:fooddeliveryapp/widget/widget-support.dart';
+import 'package:fooddeliveryapp/widget/widget_support.dart';
 
 class HomeAdmin extends StatefulWidget {
   const HomeAdmin({super.key});
