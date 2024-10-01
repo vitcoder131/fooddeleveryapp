@@ -316,7 +316,7 @@ class _ProfileState extends State<Profile> {
             ),
             GestureDetector(
               onTap: (){
-                AuthMethods().SignOut();
+                AuthMethods().signOut();
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20.0),
