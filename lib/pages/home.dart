@@ -12,178 +12,249 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   bool icecream = false, salad = false, burger = false, pizza = false; 
-  Stream? fooditemStream;
+  @override
 
-  ontheload() async {
-    fooditemStream = await DatabaseMethods().getFoodItem("Pizza");
-    setState(() {});
+  Stream? fooditemsStream;
+
+  ontheload()async{
+    fooditemsStream = await DatabaseMethods().getFoodItem("Pizza");
+    setState(() {
+      
+    });
   }
-
   @override
   void initState() {
     ontheload();
     super.initState();
+    
   }
 
-  Widget allItems() {
-    return StreamBuilder(
-      stream: fooditemStream,
-      builder: (context, AsyncSnapshot snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        if (!snapshot.hasData || snapshot.data.docs.isEmpty) {
-          return const Center(child: Text("No items found"));
-        }
-
-        return ListView.builder(
-          padding: EdgeInsets.zero,
-          itemCount: snapshot.data.docs.length,
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            DocumentSnapshot ds = snapshot.data.docs[index];
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Details(
-                      detail: ds["Detail"],
-                      name: ds["Name"],
-                      price: ds["Price"],
-                      image: ds["Image"],
+  Widget allItems(){
+    return StreamBuilder(stream: fooditemsStream,builder: (context, AsyncSnapshot snapshot){
+    return snapshot.hasData? ListView.builder(
+      padding: EdgeInsets.zero,
+      itemCount: snapshot.data.docs.length,
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index){
+          
+    }):CircularProgressIndicator();
+    });
+  }
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+      body: Container(
+        margin: EdgeInsets.only(top: 50, left: 20,),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Hello,Bao,", style: AppWidget.boldTextFeildStyle()
+            ),
+          
+        Container(
+          margin: EdgeInsets.only(right: 20),
+        padding: EdgeInsets.all(3),
+        decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(8)),
+        child: Icon(Icons.shopping_cart, color: Colors.white,),
+        )
+      ],
+      ),
+      SizedBox(height: 20,),
+       Text("Delicious Food,", style: AppWidget.HeadlineTextFeildStyle()
+            ),
+            Text("Discover and Get Great Food,", style: AppWidget.LightTextFeildStyle()
+            ),
+            SizedBox(height: 30,),
+            Container(
+              margin: EdgeInsets.only(right:20),
+              child: showItem()),
+            SizedBox(height: 20.0,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: [
+                GestureDetector(
+                  onTap:(){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Details()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(4),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        padding: EdgeInsets.all(14),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                            Text("Veggie Taco Hask", 
+                            style: AppWidget.semiBooldTextFeildStyle(),),
+                            SizedBox(height: 5.0,),
+                            Text("Fresh and Healthy", style: AppWidget.LightTextFeildStyle(),),
+                            SizedBox(height: 5.0,),
+                            Text("\$25", 
+                            style: AppWidget.semiBooldTextFeildStyle(),),
+                          ],
+                        )),
                     ),
                   ),
-                );
-              },
+                ),
+                SizedBox(width: 15,),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                          Text("Mix Vege Salad", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                          SizedBox(height: 5.0,),
+                          Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
+                          SizedBox(height: 5.0,),
+                          Text("\$28", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                        ],
+                      )),
+                  ),
+                )
+              ],),
+            ),
+            SizedBox(height: 30,),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
+              }, 
               child: Container(
-                margin: const EdgeInsets.all(5),
+                margin: EdgeInsets.only(right: 20),
                 child: Material(
                   elevation: 5.0,
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
+                    padding: EdgeInsets.all(5),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            ds["Image"],
-                            height: 150.0,
-                            width: 150,
-                            fit: BoxFit.cover,
+                        Image.asset("images/salad2.png", height: 150,width: 150, fit: BoxFit.cover),
+                      SizedBox(width: 20,),
+                      Column(children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width/2,
+                          child:
+                          Text("Mediterance Chick Salad", style: AppWidget.semiBooldTextFeildStyle(),)
                           ),
-                        ),
-                        Text(
-                          ds["Name"],
-                          style: AppWidget.semiBooldTextFeildStyle(),
-                        ),
-                        const SizedBox(height: 5.0),
-                        Text(
-                          "Fresh and Healthy",
-                          style: AppWidget.LightTextFeildStyle(),
-                        ),
-                        const SizedBox(height: 5.0),
-                        Text(
-                          "\$${ds["Price"]}",
-                          style: AppWidget.semiBooldTextFeildStyle(),
-                        ),
-                      ],
-                    ),
-                  ),
+                          SizedBox(height: 5,),
+                          Container(
+                          width: MediaQuery.of(context).size.width/2,
+                          child:
+                          Text("Honey goot cheese", style: AppWidget.LightTextFeildStyle(),)
+                          ),
+                          SizedBox(height: 5,),
+                          Container(
+                          width: MediaQuery.of(context).size.width/2,
+                          child:
+                          Text("\$28", style: AppWidget.semiBooldTextFeildStyle(),)
+                          ),
+                      ],)
+                      ],),),
                 ),
               ),
-            );
-          },
-        );
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.only(top: 50.0, left: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Hello Bao,", style: AppWidget.boldTextFeildStyle()),
-                    Container(
-                      margin: const EdgeInsets.only(right: 20.0),
-                      padding: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Icon(
-                        Icons.shopping_cart,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                Text("Delicious Food", style: AppWidget.HeadlineTextFeildStyle()),
-                Text("Discover and Get Great Food", style: AppWidget.LightTextFeildStyle()),
-                const SizedBox(height: 20.0),
-                showItem(),
-                const SizedBox(height: 30.0),
-                SizedBox(height: 270, child: allItems()),
-                const SizedBox(height: 30.0),
-                // Additional content can go here
-              ],
-            ),
-          ],
-        ),
+            )
+          ]
+      ),
       ),
     );
   }
-
-  Widget showItem() {
+  Widget showItem(){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        GestureDetector(
-          onTap: () async {
-            setState(() {
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+              GestureDetector(
+              onTap: (){
               icecream = true;
               pizza = false;
               salad = false;
               burger = false;
+              setState(() {
             });
-            fooditemStream = await DatabaseMethods().getFoodItem("Ice-cream");
-          },
-          child: Material(
-            elevation: 5.0,
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-              decoration: BoxDecoration(
-                color: icecream ? Colors.black : Colors.white,
-                borderRadius: BorderRadius.circular(10),
+              },
+                child: Material(
+                  elevation: 5,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    decoration: BoxDecoration(color: icecream?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.all(8),
+                    child: Image.asset("images/ice-cream.png", height: 60, width: 60,fit: BoxFit.cover,color: icecream?Colors.white: Colors.black ),
+                    ),
+                ),
               ),
-              padding: const EdgeInsets.all(8),
-              child: Image.asset(
-                "images/ice-cream.png",
-                height: 50,
-                width: 50,
-                fit: BoxFit.cover,
-                color: icecream ? Colors.white : Colors.black,
+              GestureDetector(
+              onTap: (){
+              icecream = false;
+              pizza = true;
+              salad = false;
+              burger = false;
+              setState(() {
+            });
+              },
+                child: Material(
+                  elevation: 5,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    decoration: BoxDecoration(color: pizza?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.all(8),
+                    child: Image.asset("images/pizza.png", height: 60, width: 60,fit: BoxFit.cover,color: pizza?Colors.white: Colors.black ),
+                    ),
+                ),
               ),
-            ),
-          ),
-        ),
-        // Similar GestureDetector for pizza, salad, and burger
-      ],
-    );
+              GestureDetector(
+              onTap: (){
+              icecream = false;
+              pizza = false;
+              salad = true;
+              burger = false;
+              setState(() {
+            });
+              },
+                child: Material(
+                  elevation: 5,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    decoration: BoxDecoration(color: salad?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.all(8),
+                    child: Image.asset("images/salad.png", height: 60, width: 60,fit: BoxFit.cover,color: salad?Colors.white: Colors.black ),
+                    ),
+                ),
+              ),
+              GestureDetector(
+              onTap: (){
+              icecream = false;
+              pizza = false;
+              salad = false;
+              burger = true;
+              setState(() {
+            });
+              },
+                child: Material(
+                  elevation: 5,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    decoration: BoxDecoration(color: burger?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.all(8),
+                    child: Image.asset("images/burger.png", height: 60, width: 60,fit: BoxFit.cover,color: burger?Colors.white: Colors.black ),
+                    ),
+                ),
+              ),
+            ],);
   }
 }

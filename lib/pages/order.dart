@@ -18,7 +18,7 @@ String? id, wallet;
 int total=0, amount2=0;
 
 void startTimer(){
-  Timer(const Duration(seconds: 3), () { 
+  Timer(Duration(seconds: 3), () { 
     amount2=total;
     setState(() {
       
@@ -65,14 +65,14 @@ setState(() {
                     DocumentSnapshot ds = snapshot.data.docs[index];
                     total= total+ int.parse(ds["Total"]);
                     return Container(
-                      margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
+                      margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(10),
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10),
                           child: Row(
                             children: [
                               Container(
@@ -83,7 +83,7 @@ setState(() {
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(child: Text(ds["Quantity"])),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 width: 20.0,
                               ),
                               ClipRRect(
@@ -94,7 +94,7 @@ setState(() {
                                     width: 90,
                                     fit: BoxFit.cover,
                                   )),
-                              const SizedBox(
+                              SizedBox(
                                 width: 20.0,
                               ),
                               Column(
@@ -115,7 +115,7 @@ setState(() {
                       ),
                     );
                   })
-              : const CircularProgressIndicator();
+              : CircularProgressIndicator();
         });
   }
 
@@ -123,27 +123,27 @@ setState(() {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.only(top: 60.0),
+        padding: EdgeInsets.only(top: 60.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Material(
                 elevation: 2.0,
                 child: Container(
-                    padding: const EdgeInsets.only(bottom: 10.0),
+                    padding: EdgeInsets.only(bottom: 10.0),
                     child: Center(
                         child: Text(
                       "Food Cart",
                       style: AppWidget.HeadlineTextFeildStyle(),
                     )))),
-            const SizedBox(
+            SizedBox(
               height: 20.0,
             ),
-            SizedBox(
+            Container(
               height: MediaQuery.of(context).size.height/2,
               child: foodCart()),
-            const Spacer(),
-            const Divider(),
+            Spacer(),
+            Divider(),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
               child: Row(
@@ -154,13 +154,13 @@ setState(() {
                     style: AppWidget.boldTextFeildStyle(),
                   ),
                   Text(
-               "\$$total",
+               "\$"+ total.toString(),
                     style: AppWidget.semiBooldTextFeildStyle(),
                   )
                 ],
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 20.0,
             ),
             GestureDetector(
@@ -170,12 +170,12 @@ await DatabaseMethods().updateUserWallet(id!, amount.toString());
 await SharedPreferenceHelper().saveUserWallet(amount.toString());
               },
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                padding: EdgeInsets.symmetric(vertical: 10.0),
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: Colors.black, borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-                child: const Center(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                child: Center(
                     child: Text(
                   "CheckOut",
                   style: TextStyle(

@@ -6,12 +6,12 @@ class UnboardingContent{
 }
 
 List<UnboardingContent> contents = [
-  UnboardingContent(
+    UnboardingContent(
     description: 'Pick your food our menu\n        More than 35 times', 
-    image: "images/sceen1.png", 
+    image: "images/screen1.png",
     title: 'Select from our\n     Best Menu'),
     UnboardingContent(description: 'You can pay Cash on delivery and\n      Card payment is available', 
-    image: "images/sceen2.png", 
+    image: "images/screen2.png", 
     title: 'Easy and Online Paymment'),
     UnboardingContent(description: 'Deliver your food at your\n       Doorstep', 
     image: "images/screen3.png", 

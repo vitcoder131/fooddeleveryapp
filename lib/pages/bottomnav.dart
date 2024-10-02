@@ -5,29 +5,30 @@ import 'package:fooddeliveryapp/pages/order.dart';
 import 'package:fooddeliveryapp/pages/profile.dart';
 import 'package:fooddeliveryapp/pages/wallet.dart';
 
-class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+class Bottomnav extends StatefulWidget {
+  const Bottomnav({super.key});
 
   @override
-  State<BottomNav> createState() => _BottomNavState();
+  State<Bottomnav> createState() => _BottomnavState();
 }
 
-class _BottomNavState extends State<BottomNav> {
-  int currentTabIndex = 0;
+class _BottomnavState extends State<Bottomnav> {
+  int currentTableindex = 0;
 
   late List<Widget> pages;
   late Widget currentPage;
   late Home homepage;
-  late Profile profile;
-  late Order order;
   late Wallet wallet;
+  late Order order;
+  late Profile profile;
+  
 
-  @override
+@override
   void initState() {
-    homepage = const Home();
-    order = const Order();
-    profile = const Profile();
-    wallet = const Wallet();
+    homepage = Home();
+    order = Order();
+    wallet = Wallet();
+    profile = Profile();
     pages = [homepage, order, wallet, profile];
     super.initState();
   }
@@ -36,34 +37,32 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-          height: 65,
-          backgroundColor: Colors.white,
-          color: Colors.black,
-          animationDuration: const Duration(milliseconds: 500),
-          onTap: (int index) {
-            setState(() {
-              currentTabIndex = index;
-            });
-          },
-          items: const [
-            Icon(
-              Icons.home_outlined,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.shopping_bag_outlined,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.wallet_outlined,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.person_outline,
-              color: Colors.white,
-            )
+        height: 65,
+        backgroundColor: Colors.white,
+        color: Colors.black,
+        animationDuration: Duration(milliseconds: 500),
+        onTap: (int index){
+          setState(() {
+            currentTableindex = index;
+          });
+        },
+        
+
+        items: [
+        Icon(
+          Icons.home_outlined, 
+          color: Colors.white,),
+          Icon(
+          Icons.shopping_bag_outlined, 
+          color: Colors.white,),
+          Icon(
+          Icons.wallet_outlined, 
+          color: Colors.white,),
+          Icon(
+          Icons.person_outline, 
+          color: Colors.white,),
           ]),
-      body: pages[currentTabIndex],
+          body: pages[currentTableindex],
     );
   }
 }

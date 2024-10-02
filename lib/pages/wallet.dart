@@ -19,7 +19,7 @@ class Wallet extends StatefulWidget {
 class _WalletState extends State<Wallet> {
   String? wallet, id;
   int? add;
-  TextEditingController amountcontroller = TextEditingController();
+  TextEditingController amountcontroller = new TextEditingController();
 
   getthesharedpref() async {
     wallet = await SharedPreferenceHelper().getUserWallet();
@@ -89,7 +89,7 @@ class _WalletState extends State<Wallet> {
                               height: 5.0,
                             ),
                             Text(
-                              "\$${wallet!}",
+                              "\$" + wallet!,
                               style: AppWidget.boldTextFeildStyle(),
                             )
                           ],
@@ -123,7 +123,7 @@ class _WalletState extends State<Wallet> {
                               border: Border.all(color: Color(0xFFE9E2E2)),
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            "\$" "100",
+                            "\$" + "100",
                             style: AppWidget.semiBooldTextFeildStyle(),
                           ),
                         ),
@@ -138,7 +138,7 @@ class _WalletState extends State<Wallet> {
                               border: Border.all(color: Color(0xFFE9E2E2)),
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            "\$" "500",
+                            "\$" + "500",
                             style: AppWidget.semiBooldTextFeildStyle(),
                           ),
                         ),
@@ -153,7 +153,7 @@ class _WalletState extends State<Wallet> {
                               border: Border.all(color: Color(0xFFE9E2E2)),
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            "\$" "1000",
+                            "\$" + "1000",
                             style: AppWidget.semiBooldTextFeildStyle(),
                           ),
                         ),
@@ -168,7 +168,7 @@ class _WalletState extends State<Wallet> {
                               border: Border.all(color: Color(0xFFE9E2E2)),
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            "\$" "2000",
+                            "\$" + "2000",
                             style: AppWidget.semiBooldTextFeildStyle(),
                           ),
                         ),
