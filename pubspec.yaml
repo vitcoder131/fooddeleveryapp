@@ -42,7 +42,9 @@ dependencies:
   shared_preferences: ^2.3.2
   image_picker: ^1.1.2
   firebase_storage: ^12.3.2
-  
+  stripe_sdk: ^5.0.0
+  flutter_stripe_web: ^6.1.0 
+  stripe_android: ^11.1.0
 
 
 

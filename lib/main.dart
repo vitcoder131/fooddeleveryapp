@@ -1,16 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fooddeliveryapp/admin/add_food.dart';
-import 'package:fooddeliveryapp/admin/admin_login.dart';
-import 'package:fooddeliveryapp/admin/home_admin.dart';
 import 'package:fooddeliveryapp/pages/bottomnav.dart';
-import 'package:fooddeliveryapp/pages/home.dart';
 
 
-import 'package:fooddeliveryapp/pages/onboard.dart';
-import 'package:fooddeliveryapp/pages/profile.dart';
-import 'package:fooddeliveryapp/pages/signup.dart';
-import 'package:fooddeliveryapp/pages/wallet.dart';
 
 
 
@@ -19,11 +11,9 @@ void main()async {
   await Firebase.initializeApp(options: FirebaseOptions(
     apiKey: "AIzaSyAk6FX_rXyTnU7nUZc8xnII7T0vfv-g45A",
     appId: "1:917403257022:android:44d1721d783e8b2a3e76ef",
-    messagingSenderId: "917403257022", 
-    projectId: "fooddeliveryapp-1c916",)
-    
-  
-  );
+    messagingSenderId: "917403257022",
+    projectId: "fooddeliveryapp-1c916",
+  ),);
   runApp(const MyApp());
 }
 
@@ -54,7 +44,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Onboard(),
+      home: Bottomnav(),
     );
   }
 }

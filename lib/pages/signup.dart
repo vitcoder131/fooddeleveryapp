@@ -17,60 +17,58 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   String email = "", password = "", name = "";
 
-  TextEditingController namecontroller = new TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
 
-  TextEditingController passwordcontroller = new TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
 
-  TextEditingController mailcontroller = new TextEditingController();
+  TextEditingController mailcontroller = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
-    if (password != null) {
-      try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
 
-        ScaffoldMessenger.of(context).showSnackBar((SnackBar(
-            backgroundColor: Colors.redAccent,
+      ScaffoldMessenger.of(context).showSnackBar((SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text(
+            "Registered Successfully",
+            style: TextStyle(fontSize: 20.0),
+          ))));
+      String Id = randomAlphaNumeric(10);
+      Map<String, dynamic> addUserInfo = {
+        "Name": namecontroller.text,
+        "Email": mailcontroller.text,
+        "Wallet": "0",
+        "Id": Id,
+      };
+      await DatabaseMethods().addUserDetail(addUserInfo, Id);
+      await SharedPreferenceHelper().saveUserName(namecontroller.text);
+      await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
+      await SharedPreferenceHelper().saveUserWallet('0');
+      await SharedPreferenceHelper().saveUserId(Id);
+
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottomnav()));
+    } on FirebaseException catch (e) {
+      if (e.code == 'weak-password') {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.orangeAccent,
             content: Text(
-              "Registered Successfully",
-              style: TextStyle(fontSize: 20.0),
-            ))));
-        String Id = randomAlphaNumeric(10);
-        Map<String, dynamic> addUserInfo = {
-          "Name": namecontroller.text,
-          "Email": mailcontroller.text,
-          "Wallet": "0",
-          "Id": Id,
-        };
-        await DatabaseMethods().addUserDetail(addUserInfo, Id);
-        await SharedPreferenceHelper().saveUserName(namecontroller.text);
-        await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
-        await SharedPreferenceHelper().saveUserWallet('0');
-        await SharedPreferenceHelper().saveUserId(Id);
-
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottomnav()));
-      } on FirebaseException catch (e) {
-        if (e.code == 'weak-password') {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Password Provided is too Weak",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        } else if (e.code == "email-already-in-use") {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Account Already exsists",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        }
+              "Password Provided is too Weak",
+              style: TextStyle(fontSize: 18.0),
+            )));
+      } else if (e.code == "email-already-in-use") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.orangeAccent,
+            content: Text(
+              "Account Already exsists",
+              style: TextStyle(fontSize: 18.0),
+            )));
       }
     }
-  }
+    }
 
   @override
   Widget build(BuildContext context) {

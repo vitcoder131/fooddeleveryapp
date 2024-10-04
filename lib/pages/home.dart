@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fooddeliveryapp/pages/details.dart';
 import 'package:fooddeliveryapp/service/database.dart';
@@ -14,8 +13,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   bool icecream = false, salad = false, burger = false, pizza = false; 
-  @override
-
   Stream? fooditemsStream;
 
   ontheload()async{
@@ -39,10 +36,13 @@ class _HomeState extends State<Home> {
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index){
+        return null;
+      
           
     }):CircularProgressIndicator();
     });
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Hello,Bao,", style: AppWidget.boldTextFeildStyle()
+            Text("Hello Bao,", style: AppWidget.boldTextFeildStyle()
             ),
           
         Container(
@@ -65,16 +65,16 @@ class _HomeState extends State<Home> {
         )
       ],
       ),
-      SizedBox(height: 20,),
+      SizedBox(height: 15,),
        Text("Delicious Food,", style: AppWidget.HeadlineTextFeildStyle()
             ),
             Text("Discover and Get Great Food,", style: AppWidget.LightTextFeildStyle()
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 10,),
             Container(
               margin: EdgeInsets.only(right:20),
               child: showItem()),
-            SizedBox(height: 20.0,),
+            SizedBox(height: 15.0,),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(children: [
@@ -119,18 +119,134 @@ class _HomeState extends State<Home> {
                           Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
                           Text("Mix Vege Salad", 
                           style: AppWidget.semiBooldTextFeildStyle(),),
-                          SizedBox(height: 5.0,),
+                          SizedBox(height: 4.0,),
                           Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
-                          SizedBox(height: 5.0,),
+                          SizedBox(height: 4.0,),
                           Text("\$28", 
                           style: AppWidget.semiBooldTextFeildStyle(),),
                         ],
                       )),
                   ),
-                )
+                ),
+                SizedBox(width: 15,),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                          Text("Mix Vege Salad", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("\$28", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                        ],
+                      )),
+                  ),
+                ),
+                SizedBox(width: 15,),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                          Text("Mix Vege Salad", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("\$28", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                        ],
+                      )),
+                  ),
+                ),
+                SizedBox(width: 15,),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                          Text("Mix Vege Salad", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("\$28", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                        ],
+                      )),
+                  ),
+                ),
+                SizedBox(width: 15,),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                   
+                  padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                          Text("Mix Vege Salad", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("\$28", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                        ],
+                      )),
+                  ),
+                ),
+                SizedBox(width: 15,),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("images/salad2.png", height: 150, width: 150, fit: BoxFit.cover,),
+                          Text("Mix Vege Salad", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("Spice and Onion", style: AppWidget.LightTextFeildStyle(),),
+                          SizedBox(height: 4.0,),
+                          Text("\$28", 
+                          style: AppWidget.semiBooldTextFeildStyle(),),
+                        ],
+                      )),
+                  ),
+                ),
               ],),
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 8.0,),
             GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
@@ -148,19 +264,19 @@ class _HomeState extends State<Home> {
                         Image.asset("images/salad2.png", height: 150,width: 150, fit: BoxFit.cover),
                       SizedBox(width: 20,),
                       Column(children: [
-                        Container(
+                        SizedBox(
                           width: MediaQuery.of(context).size.width/2,
                           child:
-                          Text("Mediterance Chick Salad", style: AppWidget.semiBooldTextFeildStyle(),)
+                          Text("Mediterance Chick Salad", style: AppWidget.semiBooldTextFeildStyle(),   ),
                           ),
                           SizedBox(height: 5,),
-                          Container(
+                          SizedBox(
                           width: MediaQuery.of(context).size.width/2,
                           child:
                           Text("Honey goot cheese", style: AppWidget.LightTextFeildStyle(),)
                           ),
                           SizedBox(height: 5,),
-                          Container(
+                          SizedBox(
                           width: MediaQuery.of(context).size.width/2,
                           child:
                           Text("\$28", style: AppWidget.semiBooldTextFeildStyle(),)
@@ -194,7 +310,7 @@ class _HomeState extends State<Home> {
                   child: Container(
                     decoration: BoxDecoration(color: icecream?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
                     padding: EdgeInsets.all(8),
-                    child: Image.asset("images/ice-cream.png", height: 60, width: 60,fit: BoxFit.cover,color: icecream?Colors.white: Colors.black ),
+                    child: Image.asset("images/ice-cream.png", height: 40, width: 40,fit: BoxFit.cover,color: icecream?Colors.white: Colors.black ),
                     ),
                 ),
               ),
@@ -213,7 +329,7 @@ class _HomeState extends State<Home> {
                   child: Container(
                     decoration: BoxDecoration(color: pizza?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
                     padding: EdgeInsets.all(8),
-                    child: Image.asset("images/pizza.png", height: 60, width: 60,fit: BoxFit.cover,color: pizza?Colors.white: Colors.black ),
+                    child: Image.asset("images/pizza.png", height: 40, width: 40,fit: BoxFit.cover,color: pizza?Colors.white: Colors.black ),
                     ),
                 ),
               ),
@@ -232,7 +348,7 @@ class _HomeState extends State<Home> {
                   child: Container(
                     decoration: BoxDecoration(color: salad?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
                     padding: EdgeInsets.all(8),
-                    child: Image.asset("images/salad.png", height: 60, width: 60,fit: BoxFit.cover,color: salad?Colors.white: Colors.black ),
+                    child: Image.asset("images/salad.png", height: 40, width: 40,fit: BoxFit.cover,color: salad?Colors.white: Colors.black ),
                     ),
                 ),
               ),
@@ -251,7 +367,7 @@ class _HomeState extends State<Home> {
                   child: Container(
                     decoration: BoxDecoration(color: burger?Colors.black: Colors.white, borderRadius: BorderRadius.circular(8)),
                     padding: EdgeInsets.all(8),
-                    child: Image.asset("images/burger.png", height: 60, width: 60,fit: BoxFit.cover,color: burger?Colors.white: Colors.black ),
+                    child: Image.asset("images/burger.png", height: 40, width: 40,fit: BoxFit.cover,color: burger?Colors.white: Colors.black ),
                     ),
                 ),
               ),

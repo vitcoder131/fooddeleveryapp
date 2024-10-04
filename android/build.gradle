@@ -1,7 +1,12 @@
-buildscript {    
-    
-    dependencies{
-        classpath("com.google.gms.google-services:4.4.2")
+buildscript {
+    repositories {
+        google() // Đảm bảo dòng này có mặt
+        mavenCentral() // Đảm bảo dòng này có mặt
+    }
+    dependencies {
+         // Hoặc phiên bản phù hợp với dự án của bạn
+        classpath 'com.google.gms:google-services:4.4.2' // Hoặc phiên bản bạn cần
+        classpath 'com.android.tools.build:gradle:7.0.4'
     }
 }
 
