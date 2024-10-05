@@ -1,3 +1,4 @@
+import 'package:fooddeliveryapp/admin/home_admin.dart';
 import 'package:fooddeliveryapp/pages/login.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,7 @@ class _ProfileState extends State<Profile> {
             const SizedBox(height: 30.0),
             buildProfileDetail("Email", email),
             const SizedBox(height: 30.0),
-            buildProfileDetail("Terms and Condition", null),
+            buildActionButton("Upload Food"),
             const SizedBox(height: 30.0),
             buildActionButton("Delete Account"),
             const SizedBox(height: 30.0),
@@ -107,11 +108,15 @@ class _ProfileState extends State<Profile> {
       onTap: () {
         if (title == "LogOut") {
           Navigator.push(context, MaterialPageRoute(builder: (context)=> LogIn())); // Điều hướng đến trang Login
+        }
+        if (title == "Upload Food") {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeAdmin())); // Điều hướng đến trang Login
         } else {
           // Xử lý sự kiện khi nhấn nút xóa tài khoản
           print('$title pressed');
         }
       },
+      
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Material(

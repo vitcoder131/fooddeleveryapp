@@ -84,7 +84,7 @@ class _SignUpState extends State<SignUp> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                    Color(0xFFff5c30),
+                    Colors.black,
                     Color(0xFFe74b1a),
                   ])),
             ),
@@ -106,7 +106,7 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Center(
                       child: Image.asset(
-                    "images/logo.png",
+                    "images/logo1.png",
                     width: MediaQuery.of(context).size.width / 1.5,
                     fit: BoxFit.cover,
                   )),
@@ -218,13 +218,8 @@ class _SignUpState extends State<SignUp> {
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 70.0,
+                            SizedBox(
+                    height: 40.0,
                   ),
                   GestureDetector(
                       onTap: () {
@@ -235,6 +230,12 @@ class _SignUpState extends State<SignUp> {
                         "Already have an account? Login",
                         style: AppWidget.semiBooldTextFeildStyle(),
                       ))
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  
                 ],
               ),
             )

@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:fooddeliveryapp/pages/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:fooddeliveryapp/widget/widget_support.dart'; // Đảm bảo rằng bạn đã định nghĩa các kiểu chữ này

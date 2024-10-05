@@ -56,7 +56,7 @@ class _LogInState extends State<LogIn> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                    Color(0xFFff5c30),
+                    Colors.black,
                     Color(0xFFe74b1a),
                   ])),
             ),
@@ -78,7 +78,7 @@ class _LogInState extends State<LogIn> {
                 children: [
                   Center(
                       child: Image.asset(
-                    "images/logo.png",
+                    "images/logo1.png",
                     width: MediaQuery.of(context).size.width / 1.5,
                     fit: BoxFit.cover,
                   )),
